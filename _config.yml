@@ -100,7 +100,7 @@ service-worker: true
 friends: [
     {
         title: "Mr.W",
-        href: "http://pekaboo.com"
+        href: "http://pekaboo.ml"
     },{
         title: "简书",
         href: "https://www.jianshu.com/u/5962dacbc25b"
