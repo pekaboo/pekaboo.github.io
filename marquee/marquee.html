@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,viewport-fit=cover">
+<title>跑马灯</title>
+<link rel="preload" href="fonts/mui.ttf" as="font" crossorigin>
+<link rel="stylesheet" href="vendor/mui.min.css">
+<link rel="stylesheet" href="vendor/waves.min.css">
+<link rel="stylesheet" href="css/general.css">
+</head>
+<body class="marquee">
+<div class="bg-img"></div>
+<header class="mui-bar mui-bar-nav">
+<!--div id="back" class="mui-icon mui-icon-left-nav mui-pull-left"></div-->
+<!-- h1 class="mui-title">跑马灯</h1-->
+<!--div id="user" class="mui-icon mui-icon-contact mui-pull-right"></div-->
+</header>
+<input type="text" class="input-block" placeholder="输入文本">
+<div class="input-bg">
+<div class="mui-input-row">
+<label id="backgroundColorLabel" for="backgroundColor">背景颜色</label>
+<input id="backgroundColor" type="text" value="#000000">
+</div>
+<div class="mui-input-row">
+<label id="textColorLabel" for="textColor">文本颜色</label>
+<input id="textColor" type="text" value="#FFFFFF">
+</div>
+<div class="mui-input-row">
+<label id="speedLabel" for="speed">速度</label>
+<input id="speed" type="number" value="40">
+</div>
+</div>
+<button type="button" class="mui-btn mui-btn-blue mui-btn-block">开始</button>
+<ul id="history" class="menu" v-if="list.length>0">
+<li v-for="(item,index) in reversed" @click="clicked(index)">{{item.title||item.text}}</li>
+</ul>
+<script src="vendor/waves.min.js" integrity="sha384-NyLmoo5NmClJKc1U/J2aG3ZeTOrp7r3nhd0lzF6+fi3UiwmNjGWql4wQJkqTC2at"></script>
+<script src="js/i18n.js"></script>
+<script src="js/general.js"></script>
+<script src="vendor/vue.min.js" integrity="sha384-OZmxTjkv7EQo5XDMPAmIkkvywVeXw59YyYh6zq8UKfkbor13jS+5p8qMTBSA1q+F"></script>
+<script src="js/marquee.js"></script>
+</body>
+</html>
