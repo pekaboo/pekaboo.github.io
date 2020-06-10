@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="layui,layuicms2.0,后台管理模版,layui后台模版" />
+<meta name="description" content="一套基于layui的纯前端后台管理模版" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="baidu_union_verify" content="e515aa931def31534a0fe8e549034901">
+<meta baidu-gxt-verify-token="3197fcf36d055d9b3d9b95d1a0d7cce5">
+<meta name="360-site-verification" content="f40c0b100980c6861cc992294fb5ef21" />
+<title>layuiCMS - 一套基于layui的纯前端后台管理模版</title>
+<link rel="icon" href="favicon.ico" />
+<link type="text/css" href="home/css/jquery.fullPage.css" rel="stylesheet" />
+<link type="text/css" href="home/css/index.css" rel="stylesheet" />
+<script>
+    document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
+    function loadingChange(){
+        if(document.readyState == "complete"){
+            document.querySelector(".loading").style.display = "none";
+        }
+    }
+    //百度统计
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0a04a6680a136b878ea1c9a99ac6608d";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</head>
+<body>
+<div class="loading"><img src="home/images/loading.gif"></div>
+<div class="content">
+    <div class="header">
+        <a href="http://www.layuicms.com" class="logo" title="layuiCMS后台管理模版">layuiCMS</a>
+        <div class="btn_box">
+            <a href="http://fly.layui.com/case/u/3198216" class="btn btn-zan" target="_blank"><span>点赞关注</span></a>
+            <a href="home/sponsors.html" class="btn btn-yellow ml30"><span>捐赠名单</span></a>
+        </div>
+    </div>
+    <div class="layuicms">
+        <div class="section section1">
+            <div class="section_item" mobile></div>
+            <div class="section_item section_word">
+                <h1>layuiCMS 2.0</h1>
+                <p>基于 layuiCMS 1.x 进行的版本升级及代码优化</p>
+                <div class="widget">
+                    <a href='https://gitee.com/layuicms/layuicms2.0/stargazers' target="_blank"><img src='https://gitee.com/layuicms/layuicms2.0/badge/star.svg?theme=dark' height="30" alt='star'/></a>
+                </div>
+                <div class="download">
+                    <a href="https://github.com/BrotherMa/layuiCMS2.0" class="btn btn-hei" target="_blank" data-text="Github下载">
+                        <span>G</span><span>i</span><span>t</span><span>h</span><span>u</span><span>b</span><span>下</span><span>载</span>
+                    </a>
+                    <a href="https://gitee.com/layuicms/layuicms2.0" class="btn btn-hong ml30" target="_blank" data-text="码云下载">
+                        <span>码</span><span>云</span><span>下</span><span>载</span>
+                    </a>
+                </div>
+            </div>
+            <a href="http://www.layuicms.com/v2/index.html" class="section_item computer computer1" target="_blank">
+                <img src="home/images/computer1.png" width="100%" />
+            </a>
+            <div class="section_item" mobile></div>
+        </div>
+        <div class="section section2">
+            <div class="section_item" mobile></div>
+            <a href="http://www.layuicms.com/v1/index.html" class="section_item computer computer2" target="_blank">
+                <img src="home/images/computer2.png" width="100%" alt="layuiCMS 1.x" />
+            </a>
+            <div class="section_item section_word">
+                <h1>layuiCMS 1.x</h1>
+                <p>一套完全基于layui框架所做的纯前端后台管理模版</p>
+                <div class="widget">
+                    <a href='https://gitee.com/layuicms/layuicms/stargazers' target="_blank"><img src='https://gitee.com/layuicms/layuicms/badge/star.svg?theme=dark' height="30" alt='star'/></a>
+                </div>
+                <div class="download">
+                    <a href="https://github.com/BrotherMa/layuiCMS" class="btn btn-hei" target="_blank" data-text="Github下载">
+                        <span>G</span><span>i</span><span>t</span><span>h</span><span>u</span><span>b</span><span>下</span><span>载</span>
+                    </a>
+                    <a href="https://gitee.com/layuicms/layuicms" class="btn btn-hong ml30" target="_blank" data-text="码云下载">
+                        <span>码</span><span>云</span><span>下</span><span>载</span>
+                    </a>
+                </div>
+            </div>
+            <div class="section_item" mobile></div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright @2018 <a href="http://www.layuicms.com" pc>layuicms.com</a>　　<a href="http://www.miitbeian.gov.cn/">京ICP备18009389号</a>
+    </div>
+    <script type="text/javascript" src="home/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="home/js/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            setTimeout(function(){$(".computer1").css({"left":"0","opacity":"1","transition":"all 1s ease-in"});$(".section1 .section_word").css({"left":"0","opacity":"1","transition":"all 1s ease-in"})},500);
+            $(".layuicms").fullpage({"navigation":true,"scrollingSpeed":1300,afterLoad:function(anchorLink,index){if(index==1){$(".computer1").css({"left":"0","opacity":"1","transition":"all 0.7s ease-in"});$(".section1 .section_word").css({"left":"0","opacity":"1","transition":"all 0.7s ease-in"})}else{if(index==2){$(".computer2").css({"top":"0","opacity":"1","transition":"all 0.7s ease-in"});$(".section2 .section_word").css({"top":"0","opacity":"1","transition":"all 0.7s ease-in"})}}},onLeave:function(index,direction){if(index==1){$(".computer1").css({"left":"-5%","opacity":"0","transition":"all 0.3s ease-in"});$(".section1 .section_word").css({"left":"5%","opacity":"0","transition":"all 0.3s ease-in"})}else{if(index==2){$(".computer2").css({"top":"-5%","opacity":"0","transition":"all 0.3s ease-in"});$(".section2 .section_word").css({"top":"5%","opacity":"0","transition":"all 0.3s ease-in"})}}}});
+        });
+    </script>
+</div>
+</body>
+</html>
