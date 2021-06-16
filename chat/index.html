@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>登录界面</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- leancloud -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.0.0/dist/av-min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+    <style>
+        @font-face {
+            font-family: "iconfont";
+            src: url('iconfont.eot?t=1591106386397');
+            /* IE9 */
+            src: url('iconfont.eot?t=1591106386397#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPkAAsAAAAACCgAAAOVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqEDIM4ATYCJAMMCwgABCAFhG0HPBsEB1GUDUqS7IckiWBsgSKJ5iIQA3MI4geKAwAAlgIQD19j7f3dvUMtQRJNHn26aJJEYoiEToIQxUIheSdEpnsms/x+7VRC3R1ElWSaNOmT7YvvDbzSSY3SaIQIoTG0rs5YPKzkCKMdmFhnZl8Ihekb28ETv33fz7o4nDbF5zc4pzmmRl2AcUABjb0swQJKkHuIV7u0w15PoF6fKeXl/dOLUktBuwXiMPBUqZVSKTXZoVaolowt4kxdbTpJfpz6349fEyEhqWS078rBni1tfpx/3fAd/w7XLgJ7PAP4SWSMKynEbqlpRzUMjauqV0W1+uSqIqSxvP//+CxNUDX/8EiCqKKZjWCYCNNJsW1WLL5Bzlmzb65zFXW4U/ImqTtRmqq8rTVL84YCiXK964MkBwBChhC37GSmaAaSZCIxivE4l2FIEkKCE4+PJJNjXMSMJhepAICiEKKrGWaMhIBoAYhLZOh2Bu7SzZGtAqIe0SYcGUlQiUgCUTVo/TnJjVvc95HI5Yi3TFFIQg4HkA28Mz+KSzM0xiMcdSST3vj0UzjDecQXy46LKNurEblFc0L3gGbB7yd2/6rYfSSsEoO2lVGueUc76Qd5FBr4XjBRXGr52LLO3SgfmellnsiUfeLOjkZD4cMQHi4vxEFvmweWxo5OZvix0VJYMQTybB2X8TbsGqooxPqHm3j4sdDQ2N6Fh17hMYUVnLuDgqKukpbs4WGWHRlWt5QUdhL9OpNfZny4NlGbb7prFux5BkrDntnR4Yvm72lYnjz7vL23GnzeXB3LWuqPt09ct8c9GsyblVq+Zb7y8lN/4+H2amVv2PFX2y3g/ef9DBVFu3RqJVqzfyG7ZUnRuFSdi8KyWYY7O/KbDAlkCDr/xNbur7+lSyk2hFqBjZDU6IWsVj+yYMehosEUVNWag3pjDiY36MCqotRh1AdAaPUFSbNXyFr9IAv2Fyq6/UNVa/Ch3lbo52wwGJudLkYlaEG/QGCylCytdILsM/QeYsVJro+7QnaBF+Zn5rLRA0yRxxjgHr0FEQLiLIF92AzjOIOcsxCNzPgi+cbsLJW9aMZkSaljCUOKQBbQXoCAkUmRW1l0cp8/gzwPYgrXFFXpryDmBLWDeTPmWiAPRGmromu5xHnkWSAEAYRlEmAfDCg2QxmQl7cKIUPM8HsEchtmSTlqK5qZX5I83yqoR4/JkSJHUXMcuEDH2NoLTJSqBEslAAAA') format('woff2'), url('iconfont.woff?t=1591106386397') format('woff'), url('iconfont.ttf?t=1591106386397') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+            url('iconfont.svg?t=1591106386397#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+        
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .icon-visible:before {
+            content: "\e6a2";
+        }
+        
+        .icon-nickname:before {
+            content: "\e6a0";
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-image: url(./bgimg.jpg); */
+            background-color: rgb(156, 108, 184);
+            /* 背景图片 */
+            background-repeat: no-repeat;
+            /* 背景图片不重复 */
+        }
+        
+        #bigBox {
+            margin: 0 auto;
+            margin-left: 20px;
+            margin-right: 20px;
+            /* login框剧中 */
+            margin-top: 200px;
+            /* login框与顶部的距离 */
+            padding: 20px 50px;
+            /* login框内部的距离(内部与输入框和按钮的距离) */
+            background-color: #00000090;
+            /* login框背景颜色和透明度 */
+            /* width: 400px;
+            height: 300px; */
+            border-radius: 10px;
+            /* 圆角边 */
+            text-align: center;
+            /* 框内所有内容剧中 */
+        }
+        
+        #bigBox h1 {
+            color: white;
+            /* LOGIN字体颜色 */
+        }
+        
+        #bigBox .inputBox {
+            margin-top: 50px;
+            /* 输入框顶部与LOGIN标题的间距 */
+        }
+        
+        #bigBox .inputBox .inputText {
+            margin-top: 20px;
+            /* 输入框之间的距离 */
+        }
+        
+        #bigBox .inputBox .inputText span {
+            color: white;
+            /* icon颜色 */
+        }
+        
+        #bigBox .inputBox .inputText input {
+            border: 0;
+            /* 删除输入框边框 */
+            padding: 10px 10px;
+            /* 输入框内的间距 */
+            border-bottom: 1px solid white;
+            /* 输入框白色下划线 */
+            background-color: #00000000;
+            /* 输入框透明 */
+            color: white;
+            /* 输入字体的颜色 */
+        }
+        
+        #bigBox .loginButton {
+            margin-top: 30px;
+            /* 按钮顶部与输入框的距离 */
+            width: 150px;
+            height: 25px;
+            color: white;
+            /* 按钮字体颜色 */
+            border: 0;
+            /* 删除按钮边框 */
+            border-radius: 20px;
+            /* 按钮圆角边 */
+            background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+            /* 按钮颜色 */
+        }
+        
+        .hide {
+            display: none;
+        }
+        /* toast */
+        
+        .toast_box {
+            width: 100%;
+            position: absolute;
+            bottom: 50px;
+            justify-content: center;
+            display: none;
+        }
+        
+        .toast_box p {
+            box-sizing: border-box;
+            padding: 10px 20px;
+            max-width: 72%;
+            width: max-content;
+            background: #000;
+            color: #FFF;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 6px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toast_box">
+        <p id="toast"></p>
+    </div>
+
+    <div id="bigBox">
+        <h1 id="title">登录</h1>
+        <div class="inputBox">
+            <div class="inputText hide" id="nickname">
+                <span class="iconfont icon-nickname"></span>
+                <input id="name" type="text" placeholder="昵称" />
+            </div>
+
+            <div class="inputText">
+                <span class="iconfont icon-nickname"></span>
+                <input id="username" type="text" placeholder="用户" />
+            </div>
+            <div class="inputText">
+                <span class="iconfont icon-visible"></span>
+                <input id="password" type="password" placeholder="密码" />
+            </div>
+
+
+        </div>
+        <input id='clickBtn' class="loginButton" type="button" value="登录"></span>
+        <label id='switchBtn' style="color: #f7f7f7;" class="" type="button" value="">注册</span>
+        </input>
+        </input>
+    </div>
+    <script>
+        (function() {
+            function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return ('');
+        } 
+        function toast(text, time=3000) {
+            var toast = document.getElementById('toast');
+            var toast_box = document.getElementsByClassName('toast_box')[0];
+            toast.innerHTML = text;
+            toast_box.style.display = 'flex';
+            setTimeout(() => {
+                toast_box.style.display = 'none';
+            }, time)
+        }
+        function $$(selector) {
+                var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+                return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+            };
+ 
+
+            var isLoginPanel = true;
+            AV.init({
+                    appId: '2GpWXVb7zQozBVtVer4GRPtY-gzGzoHsz',
+                    appKey: 'KE31O2EsHkK02HwJO5nyPfGD',
+                    serverURLs: 'https://2gpwxvb7.lc-cn-n1-shared.com'
+                });
+
+          
+            var usernameArea = $$('#username')[0];
+            var passwordArea = $$("#password")[0];
+            var nickname = $$("#nickname")[0];
+            var nameArea = $$("#name")[0];
+
+            var clickBtn = $$("#clickBtn")[0];
+            var switchBtn = $$('#switchBtn')[0];
+            var title = $$('#title')[0];
+
+            // switchBtn = document.getElementById("switchBtn") 
+            clickBtn.onclick = function() { 
+                if (isLoginPanel) {
+                    // console.log(usernameArea.value);
+                    // console.log(passwordArea.value);  
+                    //  登录
+                    const query = new AV.Query('user');
+                    query.equalTo('username', usernameArea.value);
+                    query.equalTo('password', passwordArea.value);
+
+                    query.find().then((students) => { 
+                       if(students.length>0){
+                           localStorage.setItem("login",true); 
+                           localStorage.setItem("loginInfo",JSON.stringify(students[0]));  
+                           
+                           console.log('===');
+                           console.log(getQueryVariable("callback"));
+                           let callback = unescape(getQueryVariable("callback"));
+                           console.log(callback);
+                           if(callback){ 
+                            location.href = callback;
+                           }else{
+                            location.href = "./home.html";
+                           }  
+                       }else{
+                        toast("用户名或者密码有误")
+                           return;
+                       }
+                    });
+                
+                    // 每次 进入需要判断
+                } else {  
+                    const query = new AV.Query('user');
+                    query.equalTo('username', usernameArea.value);
+                    query.find().then((students) => { 
+                        console.log(students);
+                       if(students.length>0 ){
+                        toast("用户名已注册,请更换")
+                        return;
+                       }else{ 
+                        console.log('============');
+                        const User = AV.Object.extend('user');
+                        const todo = new User();
+                        todo.set('nickname',nameArea.value);
+                        todo.set('username', usernameArea.value);
+                        todo.set('password', passwordArea.value); 
+                        // todo.set('ip', findMyIP()),
+                        // todo.set('footprint', getUUID("AJUNCHAT"));
+                        // todo.set('client', getOS() + '  ' + Browse() + '  ' + ScreenWidth() + '  ' + ScreenHeight());
+                        // 将对象保存到云端 
+                        todo.save().then((todo) => {
+                            // 成功保存之后，执行其他逻辑
+                            // console.log(todo);
+                            // console.log(`保存成功。objectId：${todo.id}`);
+                            // let row = todo._serverData; 
+                            toast('注册成功'); 
+                            location.reload();
+                        }, (error) => {
+                            console.log("Error getting document:", error);
+                            toast('注册失败');
+                        });
+                       }
+                    });
+                }
+            }
+            switchBtn.onclick = function() {
+                isLoginPanel = !isLoginPanel;
+                if (isLoginPanel) {
+                    clickBtn.value = "登录";
+                    title.innerText = "登录";
+                    switchBtn.innerText = "注册";
+                    nickname.classList.add("hide");  
+                    // nickname.style.display =  'none';
+                } else {
+                    clickBtn.value = "注册";
+                    title.innerText = "注册";
+                    switchBtn.innerText = "登录";
+                    nickname.classList.remove("hide");
+                    // nickname.style.display =  "block";
+                }
+                nameArea.value = '';
+                usernameArea.value = '';
+                passwordArea.value = '';
+            }
+        })();
+    </script>
+</body> 
+</html>

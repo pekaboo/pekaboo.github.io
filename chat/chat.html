@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>聊天室</title>
+    <!--bootstrapcdn-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"  ></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"  ></script>-->
+
+    <!--jquery-->
+    <!--<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+
+    <!--引入 element-ui 的样式，-->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.11.1/lib/theme-chalk/index.css">-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <!--vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+
+
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <!--lodash-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <!--<script  src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.js"></script>-->
+
+
+    <!--codemirror-->
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.41.0/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.41.0/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.41.0/lib/codemirror.min.css">
+
+    <!--axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- leancloud -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.0.0/dist/av-min.js"></script>
+
+
+    <style>
+        .h100 {
+            height: 100%;
+        }
+        
+        .w100 {
+            width: 100%;
+        }
+        
+        .w90 {
+            width: 90%;
+        }
+        
+        .w80 {
+            width: 80%;
+        }
+        
+        .w70 {
+            width: 70%;
+        }
+        
+        .w60 {
+            width: 60%;
+        }
+        
+        .flex-sb {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .column {
+            flex-direction: column;
+        }
+        
+        .column-reverse {
+            flex-direction: column-reverse;
+        }
+        
+        .row-reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .jcc {
+            justify-content: center;
+        }
+        
+        .aic {
+            align-items: center;
+        }
+        
+        .jcfe {
+            justify-content: flex-end;
+        }
+        
+        .flex-sa {
+            display: flex;
+            justify-content: space-around;
+        }
+        /* .flex-c {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-cc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+        
+        .flex1 {
+            flex: 1;
+        }
+        
+        .flex2 {
+            flex: 2;
+        }
+        
+        .flex3 {
+            flex: 3;
+        }
+        
+        .flex4 {
+            flex: 4;
+        }
+        
+        .flex5 {
+            flex: 5;
+        }
+        
+        .flex6 {
+            flex: 6;
+        }
+        
+        .flex7 {
+            flex: 7;
+        }
+        
+        .flex8 {
+            flex: 8;
+        }
+        
+        .flex9 {
+            flex: 9;
+        }
+        
+        .flex10 {
+            flex: 10;
+        }
+        
+        .flex-item-start {
+            align-self: start;
+        }
+        
+        .flex-item-flexstart {
+            align-self: flex-start;
+        }
+        
+        .flex-item-end {
+            align-self: end;
+        }
+        
+        .flex-item-flexend {
+            align-self: flex-end;
+        }
+        
+        .flex-item-center {
+            align-self: center;
+        }
+        
+        .flex-item-baseline {
+            align-self: baseline;
+        }
+        
+        .button-none {
+            width: auto;
+            margin: 0px;
+            padding: 0px;
+            line-height: auto;
+            font-size: 16px;
+            font-style: normal;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+            /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+        }
+        /* //  -------------------------------------------- 10px */
+        
+        .mp10 {
+            margin: 10px;
+            padding: 10px;
+        }
+        /* // 底边 */
+        
+        .mb10 {
+            margin-bottom: 10px;
+        }
+        
+        .pb10 {
+            padding-bottom: 10px;
+        }
+        /* // 顶 */
+        
+        .mt10 {
+            margin-top: 10px;
+        }
+        
+        .pt10 {
+            padding-top: 10px;
+        }
+        /* // 右边 */
+        
+        .mr10 {
+            margin-right: 10px;
+        }
+        
+        .pr10 {
+            padding-right: 10px;
+        }
+        /* // 左边边 */
+        
+        .ml10 {
+            margin-left: 10px;
+        }
+        
+        .pl10 {
+            padding-left: 10px;
+        }
+        /* // 左右  */
+        
+        .mlr10 {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        
+        .plr10 {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .m10 {
+            margin: 10px;
+        }
+        
+        .p10 {
+            padding: 10px;
+        }
+        /* //  -------------------------------------------- 25px */
+        
+        .mp25 {
+            margin: 25px;
+            padding: 25px;
+        }
+        /* // 底边 */
+        
+        .mb25 {
+            margin-bottom: 25px;
+        }
+        
+        .pb25 {
+            padding-bottom: 25px;
+        }
+        /* // 顶 */
+        
+        .mt25 {
+            margin-top: 25px;
+        }
+        
+        .pt25 {
+            padding-top: 25px;
+        }
+        /* // 右边 */
+        
+        .mr25 {
+            margin-right: 25px;
+        }
+        
+        .pr25 {
+            padding-right: 25px;
+        }
+        /* // 左边边 */
+        
+        .ml25 {
+            margin-left: 25px;
+        }
+        
+        .pl25 {
+            padding-left: 25px;
+        }
+        /* // 左右  */
+        
+        .mlr25 {
+            margin-right: 25px;
+            margin-left: 25px;
+        }
+        
+        .plr25 {
+            padding-right: 25px;
+            padding-left: 25px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .m25 {
+            margin: 25px;
+        }
+        
+        .p25 {
+            padding: 25px;
+        }
+        
+        .mb100 {
+            margin-bottom: 100px;
+        }
+        
+        .mb200 {
+            margin-bottom: 200px;
+        }
+        
+        .mb300 {
+            margin-bottom: 300px;
+        }
+        
+        .mb400 {
+            margin-bottom: 400px;
+        }
+        
+        .mb600 {
+            margin-bottom: 600px;
+        }
+        
+        .border-left-dot-01 {
+            border-left: 2px dotted #eeeeee;
+        }
+        
+        .border-left-01 {
+            border-left: 2px solid #eeeeee;
+        }
+        
+        .border-right-01 {
+            border-right: 2px solid #eeeeee;
+        }
+        
+        .border-bottom-01 {
+            border-bottom: 2px solid #eeeeee;
+        }
+        
+        .arrow-up {
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid #999;
+            border-right: 1px solid #999;
+            transform: rotate(-45deg);
+            top: 5px;
+        }
+        /* ----------------------------- */
+        
+        .bgfff {
+            background-color: #fff;
+        }
+        
+        .fff {
+            color: #fff;
+        }
+        
+        .black {
+            color: black;
+        }
+        
+        .bgtheme {
+            background-color: #f8f8f8;
+        }
+        
+        .bgtip {
+            background-color: #fffced;
+        }
+        
+        .clrtip {
+            color: #ff8f43;
+        }
+        
+        .lightblue {
+            color: #169de3;
+        }
+        
+        .gray {
+            color: gray;
+        }
+        
+        .mygray {
+            color: #c6cdd8
+        }
+        /* -------------------------icon */
+        
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .icon2 {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .bottombar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #f8f8f8;
+            background-color: #fff;
+            padding: 3% 6% 6% 6%;
+            z-index: 2000;
+        }
+        
+        .hdivline {
+            background: #E0E3DA;
+            width: 80%;
+            height: 5px;
+        }
+        
+        .vdivline {
+            background: #E0E3DA;
+            height: 100%;
+            width: 5px;
+        }
+        /* ---------------------input */
+        
+        .input-view {
+            flex: 4;
+            background-color: #f8f8f8;
+            padding-left: 25px;
+        }
+        
+        .input-view input {
+            height: 80px;
+        }
+        
+        .textcenter {
+            text-align: center;
+        }
+        
+        .divLine {
+            background: #E0E3DA;
+            width: 100%;
+            height: 5px;
+        }
+        /* 字体 ------------------*/
+        
+        .fwnormal {
+            font-weight: normal;
+        }
+        
+        .fs50 {
+            font-size: 50%;
+        }
+        
+        .fs60 {
+            font-size: 60%;
+        }
+        
+        .fs70 {
+            font-size: 70%;
+        }
+        
+        .fs80 {
+            font-size: 80%;
+        }
+        
+        .fs90 {
+            font-size: 90%;
+        }
+        
+        .fs110 {
+            font-size: 110%;
+        }
+        
+        .fs120 {
+            font-size: 120%;
+        }
+        
+        .fs150 {
+            font-size: 150%;
+        }
+        
+        .fs200 {
+            font-size: 200%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="" style="padding-bottom: 200px;">
+            <div v-for="item in msg" :key="item.id" ref="element">
+                <div v-if="item.mine" style="padding-top: 20px; padding-left: 20px; padding-right: 20px">
+                    <div class="mb10" style="text-align:center;color:#fff;">{{ (item.time) }}</div>
+                    <div class="flex ">
+                        <div class="flex2 flex aic jcfe">
+                            <image width="40" height="40" radius="5" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+                        </div>
+
+                        <div class="flex flex8  ">
+                            <div class="triangle flex-item-center"></div>
+                            <div class="msg">
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <div class="flex2">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div v-if="!item.mine" style="padding-top: 20px; padding-left: 20px; padding-right: 20px">
+                    <div class="mb10 fs80" style="text-align:center;color:#fff;">{{(item.time) }}</div>
+                    <div class="flex ">
+                        <div class="flex2">
+
+                        </div>
+
+                        <div class="flex flex8 ">
+
+                            <div class="msg">
+                                {{ item.content }}
+                            </div>
+                            <div class="mt10">
+                                <div class="triangle2 flex-item-center"></div>
+                            </div>
+                        </div>
+                        <div class="  flex2    ">
+                            <image width="40px" height="40px" radius="5" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style=" position:fixed; bottom:0px; left:0px; 
+        background-color:rgba(247, 247, 247,0.8);width:100% ; ">
+            <div class="flex jcc aic ">
+                <div class="flex2 flex aic jcfe">
+                </div>
+
+                <div class="flex flex8  ">
+                    <input type="text" class="w100 mlr25" v-model="value" placeholder="" label="" left-icon="contact"></input>
+                </div>
+                <div class="flex2 flex aic ">
+                    <image width="30" height="30" radius="5" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+                    <button class="ml10" style="width: auto;" plain type="primary" @click="sendMsg" size="small">发送</button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        String.prototype.replaceAll = function(o, n) {
+            return this.replace(new RegExp(o, 'g'), n);
+        };
+
+        //利用原生Js获取操作系统版本
+        function getOS() {
+            var sUserAgent = navigator.userAgent;
+            var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows");
+            var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") || (navigator.platform == "Macintosh") || (navigator.platform == "MacIntel");
+            if (isMac) return "Mac";
+            var isUnix = (navigator.platform == "X11") && !isWin && !isMac;
+            if (isUnix) return "Unix";
+            var isLinux = (String(navigator.platform).indexOf("Linux") > -1);
+            if (isLinux) return "Linux";
+            if (isWin) {
+                var isWin2K = sUserAgent.indexOf("Windows NT 5.0") > -1 || sUserAgent.indexOf("Windows 2000") > -1;
+                if (isWin2K) return "Win2000";
+                var isWinXP = sUserAgent.indexOf("Windows NT 5.1") > -1 || sUserAgent.indexOf("Windows XP") > -1;
+                if (isWinXP) return "WinXP";
+                var isWin2003 = sUserAgent.indexOf("Windows NT 5.2") > -1 || sUserAgent.indexOf("Windows 2003") > -1;
+                if (isWin2003) return "Win2003";
+                var isWinVista = sUserAgent.indexOf("Windows NT 6.0") > -1 || sUserAgent.indexOf("Windows Vista") > -1;
+                if (isWinVista) return "WinVista";
+                var isWin7 = sUserAgent.indexOf("Windows NT 6.1") > -1 || sUserAgent.indexOf("Windows 7") > -1;
+                if (isWin7) return "Win7";
+                var isWin10 = sUserAgent.indexOf("Windows NT 10") > -1 || sUserAgent.indexOf("Windows 10") > -1;
+                if (isWin10) return "Win10";
+            }
+            return "other";
+        }
+
+
+        //document.write("您的操作系统是："+getOS());
+        //console.log("您的操作系统是："+getOS())
+
+        /****获得客户端ID****/
+        function ClientID(name) {
+            var cookies = document.cookie.split(";");
+            var value = "";
+            for (var i = 0; i < cookies.length; i++) {
+                var temp = cookies[i].split("=");
+                var tempValue = temp[0].replace(/(^\s*)|(\s*$)/g, "");
+                if (tempValue == name) {
+                    value = unescape(temp[1]);
+                    break;
+                }
+            }
+            return value;
+        }
+
+        /**获得屏幕宽度**/
+        function ScreenWidth() {
+            return window.screen.width;
+        };
+        /***获得屏幕高度**/
+        function ScreenHeight() {
+            return window.screen.height;
+        };
+        /**获得浏览器***/
+        function Browse() {
+            var browser = {};
+            var userAgent = navigator.userAgent.toLowerCase();
+            var s;
+            (s = userAgent.match(/msie ([\d.]+)/)) ? browser.ie = s[1]: (s = userAgent.match(/firefox\/([\d.]+)/)) ? browser.firefox = s[1] : (s = userAgent.match(/chrome\/([\d.]+)/)) ? browser.chrome = s[1] : (s = userAgent.match(/opera.([\d.]+)/)) ? browser.opera = s[1] : (s = userAgent.match(/version\/([\d.]+).*safari/)) ? browser.safari = s[1] : 0;
+            var version = "";
+            if (browser.ie) {
+                version = 'IE ' + browser.ie;
+            } else {
+                if (browser.firefox) {
+                    version = 'firefox ' + browser.firefox;
+                } else {
+                    if (browser.chrome) {
+                        version = 'chrome ' + browser.chrome;
+                    } else {
+                        if (browser.opera) {
+                            version = 'opera ' + browser.opera;
+                        } else {
+                            if (browser.safari) {
+                                version = 'safari ' + browser.safari;
+                            } else {
+                                version = '未知浏览器';
+                            }
+                        }
+                    }
+                }
+            }
+            return version;
+        }
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return ('');
+        }
+
+
+        function findMyIP(only = false) {
+            if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+            else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
+            xmlhttp.send();
+
+            hostipInfo = xmlhttp.responseText.split("\n");
+
+            var myIp = ''
+            var myCity = ''
+            var myCountry = ''
+            for (i = 0; hostipInfo.length >= i; i++) {
+                if (hostipInfo[i]) {
+                    ipAddress = hostipInfo[i].split(":");
+                    if (ipAddress[0] == "IP") myIp = ipAddress[1];
+                    if (ipAddress[0] == "Country") myCity = ipAddress[1];
+                    if (ipAddress[0] == "City") myCountry = ipAddress[1];
+                }
+            }
+            if (only) {
+                return myIp
+            } else {
+                return {
+                    'ip': myIp,
+                    'city': myCity,
+                    'country': myCountry,
+                };
+            }
+
+        }
+
+
+        // 浏览器指纹 begin
+
+        function bin2hex(s) {
+            var i, l, o = '',
+                n;
+
+            s += '';
+
+            for (i = 0, l = s.length; i < l; i++) {
+                n = s.charCodeAt(i)
+                    .toString(16);
+                o += n.length < 2 ? '0' + n : n;
+            }
+
+            return o;
+        }
+
+        function getUUID(domain) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext("2d");
+            var txt = domain;
+            ctx.textBaseline = "top";
+            ctx.font = "14px 'Arial'";
+            ctx.textBaseline = "tencent";
+            ctx.fillStyle = "#f60";
+            ctx.fillRect(125, 1, 62, 20);
+            ctx.fillStyle = "#069";
+            ctx.fillText(txt, 2, 15);
+            ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+            ctx.fillText(txt, 4, 17);
+
+            var b64 = canvas.toDataURL().replace("data:image/png;base64,", "");
+            var bin = atob(b64);
+            var crc = bin2hex(bin.slice(-16, -12));
+            return crc;
+        }
+
+        // 浏览器指纹 end
+
+        function timeFormat(timestamp) {
+            var date; //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            console.log(timestamp.toString().length);
+            if (timestamp.toString().length == 10) {
+                date = new Date(parseInt(timestamp) * 1000);
+            } else if (timestamp.toString().length == 13) {
+                date = new Date(parseInt(timestamp.toString()));
+            }
+
+            var year = date.getFullYear(),
+                month = ("0" + (date.getMonth() + 1)).slice(-2),
+                sdate = ("0" + date.getDate()).slice(-2),
+                hour = ("0" + date.getHours()).slice(-2),
+                minute = ("0" + date.getMinutes()).slice(-2),
+                second = ("0" + date.getSeconds()).slice(-2);
+            // 拼接
+            var result = year + "-" + month + "-" + sdate + " " + hour + ":" + minute + ":" + second;
+            // 返回
+            return result;
+        }
+
+        function dateFormat(time = +new Date()) {
+            console.log(time)
+            var date = new Date(time + 8 * 3600 * 1000); // 增加8小时
+            return date.toJSON().substr(0, 19).replace('T', ' ');
+        }
+
+        // function runToTop() {
+        //     var currentPosition, timer;
+        //     var speed = 10;
+        //     currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+        //     currentPosition -= speed; //speed变量
+        //     if (currentPosition > 0) {
+        //         window.scrollTo(0, currentPosition);
+        //     } else {
+        //         window.scrollTo(0, 0);
+        //         clearInterval(timer);
+        //     }
+        //     console.log(new Date());
+        // }
+    </script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                password: '',
+
+                // google firebase
+                // firebase: null,
+                // firedb: null,
+                // fireui: null,
+                // hitokoto: null,
+
+                //learncloud 
+                AV: null,
+
+                value: "",
+                msg: [],
+            },
+            methods: {
+
+                sendMsg: function() {
+                    if (this.value) {
+                        const Chat = AV.Object.extend('chat');
+                        const todo = new Chat();
+                        todo.set('name', this.loginInfo.username);
+                        todo.set('content', this.value);
+                        todo.set('time', new Date());
+                        todo.set('room', this.room.code);
+                        todo.set('ip', findMyIP());
+                        todo.set('footprint', getUUID("AJUNCHAT"));
+                        todo.set('client', getOS() + '  ' + Browse() + '  ' + ScreenWidth() + '  ' + ScreenHeight());
+                        // 将对象保存到云端
+                        todo.save().then((todo) => {
+                            // 成功保存之后，执行其他逻辑
+                            // console.log(todo);
+                            // console.log(`保存成功。objectId：${todo.id}`);
+                            let row = todo._serverData;
+                            row['time'] = dateFormat(row.time)
+                            this.msg.unshift(row)
+                        }, (error) => {
+                            console.log("Error getting document:", error);
+                            this.$message('发送失败');
+                        });
+
+
+                        this.value = "";
+                    }
+                },
+
+            },
+            created() {
+                const that = this;
+
+                let login = localStorage.getItem("login");
+                if (!login) {
+                    location.href = "./login.html?callback=" + escape(location.href);
+                }
+                this.loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
+
+                AV.init({
+                    appId: '2GpWXVb7zQozBVtVer4GRPtY-gzGzoHsz',
+                    appKey: 'KE31O2EsHkK02HwJO5nyPfGD',
+                    serverURLs: 'https://2gpwxvb7.lc-cn-n1-shared.com'
+                });
+                that.AV = AV;
+
+                //查询room信息
+                let room = getQueryVariable('room');
+                let rooms = new AV.Query('room');
+                rooms.equalTo('code', room);
+                rooms.equalTo('username', this.loginInfo.username);
+                rooms.find().then(function(res) {
+                    // 成功 
+                    let rs = res.map((i) => {
+                        return {
+                            'code': i._serverData.code,
+                            'name': i._serverData.name
+                        }
+                    })
+
+                    if (rs.length > 0) {
+                        that.room = rs[0];
+                        document.title = that.room.name;
+                    } else {
+                        document.write("此聊天室不存在");
+                        return;
+                    }
+                }, function(error) {
+
+                }).then(
+                    function() {
+                        //查询
+                        let chats = new AV.Query('chat').descending('time');
+                        chats.equalTo('room', that.room.code);
+                        chats.find().then(function(res) {
+                            // 成功 
+                            that.msg = res.map((i) => {
+                                return {
+                                    'content': i._serverData.content,
+                                    'name': i._serverData.name,
+                                    'time': dateFormat(i._serverData.time),
+                                    'room': i._serverData.room,
+                                    'footprint': i._serverData.footprint,
+                                    'client': i._serverData.client,
+                                }
+                            })
+                        }, function(error) {
+                            // 异常处理
+                        });
+                    }
+                );
+
+
+
+
+                //格言
+                axios
+                    .get('https://international.v1.hitokoto.cn/')
+                    .then(response => (this.hitokoto = response.data.hitokoto))
+                    .catch(function(error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+        })
+    </script>
+</body>
+
+
+<style>
+    body {
+        height: 100%;
+        background-color: #000;
+    }
+    
+    input {
+        padding: 5px;
+        border: 1 solid grey;
+        background-color: #fff;
+        color: #000;
+    }
+    
+    #app {}
+    
+    .msg {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+        width: 100%;
+        white-space: normal;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+    
+    .triangle2 {
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: #fff;
+        border-right-color: none;
+    }
+    
+    .triangle {
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: none;
+        border-right-color: #fff;
+    }
+</style>
+
+</html>

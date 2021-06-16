@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我的</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- leancloud -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.0.0/dist/av-min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="https://lib.baomitu.com/nunjucks/3.0.1/nunjucks.min.js"></script>
+
+
+
+    <style>
+        .h100 {
+            height: 100%;
+        }
+        
+        .w100 {
+            width: 100%;
+        }
+        
+        .w90 {
+            width: 90%;
+        }
+        
+        .w80 {
+            width: 80%;
+        }
+        
+        .w70 {
+            width: 70%;
+        }
+        
+        .w60 {
+            width: 60%;
+        }
+        
+        .flex-sb {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .column {
+            flex-direction: column;
+        }
+        
+        .column-reverse {
+            flex-direction: column-reverse;
+        }
+        
+        .row-reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .jcc {
+            justify-content: center;
+        }
+        
+        .aic {
+            align-items: center;
+        }
+        
+        .jcfe {
+            justify-content: flex-end;
+        }
+        
+        .flex-sa {
+            display: flex;
+            justify-content: space-around;
+        }
+        /* .flex-c {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-cc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+        
+        .flex1 {
+            flex: 1;
+        }
+        
+        .flex2 {
+            flex: 2;
+        }
+        
+        .flex3 {
+            flex: 3;
+        }
+        
+        .flex4 {
+            flex: 4;
+        }
+        
+        .flex5 {
+            flex: 5;
+        }
+        
+        .flex6 {
+            flex: 6;
+        }
+        
+        .flex7 {
+            flex: 7;
+        }
+        
+        .flex8 {
+            flex: 8;
+        }
+        
+        .flex9 {
+            flex: 9;
+        }
+        
+        .flex10 {
+            flex: 10;
+        }
+        
+        .flex-item-start {
+            align-self: start;
+        }
+        
+        .flex-item-flexstart {
+            align-self: flex-start;
+        }
+        
+        .flex-item-end {
+            align-self: end;
+        }
+        
+        .flex-item-flexend {
+            align-self: flex-end;
+        }
+        
+        .flex-item-center {
+            align-self: center;
+        }
+        
+        .flex-item-baseline {
+            align-self: baseline;
+        }
+        
+        .button-none {
+            width: auto;
+            margin: 0px;
+            padding: 0px;
+            line-height: auto;
+            font-size: 16px;
+            font-style: normal;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+            /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+        }
+        /* //  -------------------------------------------- 10px */
+        
+        .mp10 {
+            margin: 10px;
+            padding: 10px;
+        }
+        /* // 底边 */
+        
+        .mb10 {
+            margin-bottom: 10px;
+        }
+        
+        .pb10 {
+            padding-bottom: 10px;
+        }
+        /* // 顶 */
+        
+        .mt10 {
+            margin-top: 10px;
+        }
+        
+        .pt10 {
+            padding-top: 10px;
+        }
+        /* // 右边 */
+        
+        .mr10 {
+            margin-right: 10px;
+        }
+        
+        .pr10 {
+            padding-right: 10px;
+        }
+        /* // 左边边 */
+        
+        .ml10 {
+            margin-left: 10px;
+        }
+        
+        .pl10 {
+            padding-left: 10px;
+        }
+        /* // 左右  */
+        
+        .mlr10 {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        
+        .plr10 {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .m10 {
+            margin: 10px;
+        }
+        
+        .p10 {
+            padding: 10px;
+        }
+        /* //  -------------------------------------------- 25px */
+        
+        .mp25 {
+            margin: 25px;
+            padding: 25px;
+        }
+        /* // 底边 */
+        
+        .mb25 {
+            margin-bottom: 25px;
+        }
+        
+        .pb25 {
+            padding-bottom: 25px;
+        }
+        /* // 顶 */
+        
+        .mt25 {
+            margin-top: 25px;
+        }
+        
+        .pt25 {
+            padding-top: 25px;
+        }
+        /* // 右边 */
+        
+        .mr25 {
+            margin-right: 25px;
+        }
+        
+        .pr25 {
+            padding-right: 25px;
+        }
+        /* // 左边边 */
+        
+        .ml25 {
+            margin-left: 25px;
+        }
+        
+        .pl25 {
+            padding-left: 25px;
+        }
+        /* // 左右  */
+        
+        .mlr25 {
+            margin-right: 25px;
+            margin-left: 25px;
+        }
+        
+        .plr25 {
+            padding-right: 25px;
+            padding-left: 25px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .m25 {
+            margin: 25px;
+        }
+        
+        .p25 {
+            padding: 25px;
+        }
+        
+        .mb100 {
+            margin-bottom: 100px;
+        }
+        
+        .mb200 {
+            margin-bottom: 200px;
+        }
+        
+        .mb300 {
+            margin-bottom: 300px;
+        }
+        
+        .mb400 {
+            margin-bottom: 400px;
+        }
+        
+        .mb600 {
+            margin-bottom: 600px;
+        }
+        
+        .border-left-dot-01 {
+            border-left: 2px dotted #eeeeee;
+        }
+        
+        .border-left-01 {
+            border-left: 2px solid #eeeeee;
+        }
+        
+        .border-right-01 {
+            border-right: 2px solid #eeeeee;
+        }
+        
+        .border-bottom-01 {
+            border-bottom: 2px solid #eeeeee;
+        }
+        
+        .arrow-up {
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid #999;
+            border-right: 1px solid #999;
+            transform: rotate(-45deg);
+            top: 5px;
+        }
+        /* ----------------------------- */
+        
+        .bgfff {
+            background-color: #fff;
+        }
+        
+        .fff {
+            color: #fff;
+        }
+        
+        .black {
+            color: black;
+        }
+        
+        .bgtheme {
+            background-color: #f8f8f8;
+        }
+        
+        .bgtip {
+            background-color: #fffced;
+        }
+        
+        .clrtip {
+            color: #ff8f43;
+        }
+        
+        .lightblue {
+            color: #169de3;
+        }
+        
+        .gray {
+            color: gray;
+        }
+        
+        .mygray {
+            color: #c6cdd8
+        }
+        /* -------------------------icon */
+        
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .icon2 {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .bottombar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #f8f8f8;
+            background-color: #fff;
+            padding: 3% 6% 6% 6%;
+            z-index: 2000;
+        }
+        
+        .hdivline {
+            background: #E0E3DA;
+            width: 80%;
+            height: 5px;
+        }
+        
+        .hdivline2 {
+            background: #E0E3DA;
+            height: 5px;
+        }
+        
+        .vdivline {
+            background: #E0E3DA;
+            height: 100%;
+            width: 5px;
+        }
+        /* ---------------------input */
+        
+        .input-view {
+            flex: 4;
+            background-color: #f8f8f8;
+            padding-left: 25px;
+        }
+        
+        .input-view input {
+            height: 80px;
+        }
+        
+        .textcenter {
+            text-align: center;
+        }
+        
+        .divLine {
+            background: #E0E3DA;
+            width: 100%;
+            height: 5px;
+        }
+        /* 字体 ------------------*/
+        
+        .fwnormal {
+            font-weight: normal;
+        }
+        
+        .fs50 {
+            font-size: 50%;
+        }
+        
+        .fs60 {
+            font-size: 60%;
+        }
+        
+        .fs70 {
+            font-size: 70%;
+        }
+        
+        .fs80 {
+            font-size: 80%;
+        }
+        
+        .fs90 {
+            font-size: 90%;
+        }
+        
+        .fs110 {
+            font-size: 110%;
+        }
+        
+        .fs120 {
+            font-size: 120%;
+        }
+        
+        .fs150 {
+            font-size: 150%;
+        }
+        
+        .fs200 {
+            font-size: 200%;
+        }
+    </style>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-image: url(./bgimg.jpg); */
+            background-color: rgb(255, 255, 255);
+            /* 背景图片 */
+            background-repeat: no-repeat;
+            /* 背景图片不重复 */
+        }
+        
+        .hide {
+            display: none;
+        }
+        /* toast */
+        
+        .toast_box {
+            width: 100%;
+            position: absolute;
+            bottom: 50px;
+            justify-content: center;
+            display: none;
+            z-index: 99;
+        }
+        
+        .toast_box p {
+            box-sizing: border-box;
+            padding: 10px 20px;
+            max-width: 72%;
+            width: max-content;
+            background: #000;
+            color: #FFF;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 6px;
+            opacity: 0.8;
+        }
+        
+        #msgBox {
+            /* position: absolute; */
+            background-color: rgb(156, 108, 184);
+            margin: 0 auto;
+            margin-left: 25px;
+            margin-right: 25px;
+            /* login框剧中 */
+            margin-top: 200px;
+            /* login框与顶部的距离 */
+            padding: 20px 50px;
+            /* login框内部的距离(内部与输入框和按钮的距离) */
+            background-color: #00000090;
+            /* login框背景颜色和透明度 */
+            /* width: 400px;
+            height: 300px; */
+            border-radius: 10px;
+            /* 圆角边 */
+            /* text-align: center; */
+            /* 框内所有内容剧中 */
+            display: none;
+            z-index: 99;
+        }
+        
+        #msgBox h1 {
+            color: white;
+            /* LOGIN字体颜色 */
+        }
+        
+        #msgBox .inputBox {
+            margin-top: 50px;
+            /* 输入框顶部与LOGIN标题的间距 */
+        }
+        
+        #msgBox .inputBox .inputText {
+            margin-top: 20px;
+            /* 输入框之间的距离 */
+        }
+        
+        #msgBox .inputBox .inputText span {
+            color: white;
+            /* icon颜色 */
+        }
+        
+        #msgBox .inputBox .inputText input {
+            border: 0;
+            /* 删除输入框边框 */
+            padding: 10px 10px;
+            /* 输入框内的间距 */
+            border-bottom: 1px solid white;
+            /* 输入框白色下划线 */
+            background-color: #00000000;
+            /* 输入框透明 */
+            color: white;
+            /* 输入字体的颜色 */
+        }
+        
+        #msgBox .loginButton {
+            margin-top: 30px;
+            /* 按钮顶部与输入框的距离 */
+            width: 150px;
+            height: 25px;
+            color: white;
+            /* 按钮字体颜色 */
+            border: 0;
+            /* 删除按钮边框 */
+            border-radius: 20px;
+            /* 按钮圆角边 */
+            background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+            /* 按钮颜色 */
+        }
+        
+        .button {
+            background-color: #fff;
+            color: #42b983;
+            margin: 0.5em 0;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            min-width: 8em;
+            text-align: center;
+            padding: 0.75em 2em;
+            border-radius: 2em;
+            display: inline-block;
+            color: #fff;
+            background-color: #4fc08d;
+            transition: all 0.15s ease;
+            box-sizing: border-box;
+            border: 1px solid #4fc08d;
+        }
+    </style>
+
+
+    <script>
+        String.prototype.replaceAll = function(o, n) {
+            return this.replace(new RegExp(o, 'g'), n);
+        };
+
+        //利用原生Js获取操作系统版本
+        function getOS() {
+            var sUserAgent = navigator.userAgent;
+            var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows");
+            var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") || (navigator.platform ==
+                "Macintosh") || (navigator.platform == "MacIntel");
+            if (isMac) return "Mac";
+            var isUnix = (navigator.platform == "X11") && !isWin && !isMac;
+            if (isUnix) return "Unix";
+            var isLinux = (String(navigator.platform).indexOf("Linux") > -1);
+            if (isLinux) return "Linux";
+            if (isWin) {
+                var isWin2K = sUserAgent.indexOf("Windows NT 5.0") > -1 || sUserAgent.indexOf("Windows 2000") > -1;
+                if (isWin2K) return "Win2000";
+                var isWinXP = sUserAgent.indexOf("Windows NT 5.1") > -1 || sUserAgent.indexOf("Windows XP") > -1;
+                if (isWinXP) return "WinXP";
+                var isWin2003 = sUserAgent.indexOf("Windows NT 5.2") > -1 || sUserAgent.indexOf("Windows 2003") > -1;
+                if (isWin2003) return "Win2003";
+                var isWinVista = sUserAgent.indexOf("Windows NT 6.0") > -1 || sUserAgent.indexOf("Windows Vista") > -1;
+                if (isWinVista) return "WinVista";
+                var isWin7 = sUserAgent.indexOf("Windows NT 6.1") > -1 || sUserAgent.indexOf("Windows 7") > -1;
+                if (isWin7) return "Win7";
+                var isWin10 = sUserAgent.indexOf("Windows NT 10") > -1 || sUserAgent.indexOf("Windows 10") > -1;
+                if (isWin10) return "Win10";
+            }
+            return "other";
+        }
+
+
+        //document.write("您的操作系统是："+getOS());
+        //console.log("您的操作系统是："+getOS())
+
+        /****获得客户端ID****/
+        function ClientID(name) {
+            var cookies = document.cookie.split(";");
+            var value = "";
+            for (var i = 0; i < cookies.length; i++) {
+                var temp = cookies[i].split("=");
+                var tempValue = temp[0].replace(/(^\s*)|(\s*$)/g, "");
+                if (tempValue == name) {
+                    value = unescape(temp[1]);
+                    break;
+                }
+            }
+            return value;
+        }
+
+        /**获得屏幕宽度**/
+        function ScreenWidth() {
+            return window.screen.width;
+        };
+        /***获得屏幕高度**/
+        function ScreenHeight() {
+            return window.screen.height;
+        };
+        /**获得浏览器***/
+        function Browse() {
+            var browser = {};
+            var userAgent = navigator.userAgent.toLowerCase();
+            var s;
+            (s = userAgent.match(/msie ([\d.]+)/)) ? browser.ie = s[1]: (s = userAgent.match(/firefox\/([\d.]+)/)) ?
+                browser.firefox = s[1] : (s = userAgent.match(/chrome\/([\d.]+)/)) ? browser.chrome = s[1] : (s =
+                    userAgent.match(/opera.([\d.]+)/)) ? browser.opera = s[1] : (s = userAgent.match(
+                    /version\/([\d.]+).*safari/)) ? browser.safari = s[1] : 0;
+            var version = "";
+            if (browser.ie) {
+                version = 'IE ' + browser.ie;
+            } else {
+                if (browser.firefox) {
+                    version = 'firefox ' + browser.firefox;
+                } else {
+                    if (browser.chrome) {
+                        version = 'chrome ' + browser.chrome;
+                    } else {
+                        if (browser.opera) {
+                            version = 'opera ' + browser.opera;
+                        } else {
+                            if (browser.safari) {
+                                version = 'safari ' + browser.safari;
+                            } else {
+                                version = '未知浏览器';
+                            }
+                        }
+                    }
+                }
+            }
+            return version;
+        }
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return ('');
+        }
+
+
+        function findMyIP(only = false) {
+            if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+            else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
+            xmlhttp.send();
+
+            hostipInfo = xmlhttp.responseText.split("\n");
+
+            var myIp = ''
+            var myCity = ''
+            var myCountry = ''
+            for (i = 0; hostipInfo.length >= i; i++) {
+                if (hostipInfo[i]) {
+                    ipAddress = hostipInfo[i].split(":");
+                    if (ipAddress[0] == "IP") myIp = ipAddress[1];
+                    if (ipAddress[0] == "Country") myCity = ipAddress[1];
+                    if (ipAddress[0] == "City") myCountry = ipAddress[1];
+                }
+            }
+            if (only) {
+                return myIp
+            } else {
+                return {
+                    'ip': myIp,
+                    'city': myCity,
+                    'country': myCountry,
+                };
+            }
+
+        }
+
+
+        // 浏览器指纹 begin
+
+        function bin2hex(s) {
+            var i, l, o = '',
+                n;
+
+            s += '';
+
+            for (i = 0, l = s.length; i < l; i++) {
+                n = s.charCodeAt(i)
+                    .toString(16);
+                o += n.length < 2 ? '0' + n : n;
+            }
+
+            return o;
+        }
+
+        function getUUID(domain) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext("2d");
+            var txt = domain;
+            ctx.textBaseline = "top";
+            ctx.font = "14px 'Arial'";
+            ctx.textBaseline = "tencent";
+            ctx.fillStyle = "#f60";
+            ctx.fillRect(125, 1, 62, 20);
+            ctx.fillStyle = "#069";
+            ctx.fillText(txt, 2, 15);
+            ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+            ctx.fillText(txt, 4, 17);
+
+            var b64 = canvas.toDataURL().replace("data:image/png;base64,", "");
+            var bin = atob(b64);
+            var crc = bin2hex(bin.slice(-16, -12));
+            return crc;
+        }
+
+        // 浏览器指纹 end
+
+        function timeFormat(timestamp) {
+            var date; //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            console.log(timestamp.toString().length);
+            if (timestamp.toString().length == 10) {
+                date = new Date(parseInt(timestamp) * 1000);
+            } else if (timestamp.toString().length == 13) {
+                date = new Date(parseInt(timestamp.toString()));
+            }
+
+            var year = date.getFullYear(),
+                month = ("0" + (date.getMonth() + 1)).slice(-2),
+                sdate = ("0" + date.getDate()).slice(-2),
+                hour = ("0" + date.getHours()).slice(-2),
+                minute = ("0" + date.getMinutes()).slice(-2),
+                second = ("0" + date.getSeconds()).slice(-2);
+            // 拼接
+            var result = year + "-" + month + "-" + sdate + " " + hour + ":" + minute + ":" + second;
+            // 返回
+            return result;
+        }
+
+        function dateFormat(time = +new Date()) {
+            console.log(time)
+            var date = new Date(time + 8 * 3600 * 1000); // 增加8小时
+            return date.toJSON().substr(0, 19).replace('T', ' ');
+        }
+
+        function runToTop() {
+            var currentPosition, timer;
+            var speed = 10;
+            currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            currentPosition -= speed; //speed变量
+            if (currentPosition > 0) {
+                window.scrollTo(0, currentPosition);
+            } else {
+                window.scrollTo(0, 0);
+                clearInterval(timer);
+            }
+            console.log(new Date());
+        }
+
+        function randomString(len) {
+            len = len || 32;
+            var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+            var maxPos = $chars.length;
+            var pwd = '';
+            for (i = 0; i < len; i++) {
+                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+            }
+            1
+            return pwd;
+            1
+        }
+    </script>
+</head>
+
+<body>
+    <div class="toast_box">
+        <p id="toast"></p>
+    </div>
+    <div class="flex column" style="position: fixed; bottom: 40px; right: 40px;">
+        <div id="createRoom" class="button">创建房间</div>
+        <div id="enterRoom" class="button">加入房间</div>
+        <div id="clearStorage" class="button">登出</div>
+    </div>
+
+
+    <div class="bgfff h100" style=" position: absolute; ">
+        <div id="msgBox">
+            <h1 id="title">进入房间</h1>
+            <div class="inputBox">
+                <div class="inputText">
+                    <span class="iconfont icon-visible">房间名称</span>
+                    <input id="roomName" type="text" placeholder="房间名称" />
+                </div>
+                <div class="inputText">
+                    <span class="iconfont icon-visible">房间口令</span>
+                    <input id="roomPass" type="text" placeholder="房间口令" />
+                </div>
+            </div>
+            <input id='okBtn' class="loginButton" type="button" value="确定"></span>
+            <label id='cancelBtn' style="color: #f7f7f7;" class="" type="button" value="">取消</span>
+                </input>
+                </input>
+        </div>
+    </div>
+
+
+
+    <div class="flex m25">
+        <div class="flex bold p25 w100 "
+            style="height:65px;border:2px solid #2577ff;background:#2577ff;color:#fff;border-radius: 8px; ">
+            <div>最小的圈子</div>
+            <div class="fs80">就在这里</div>
+        </div>
+    </div>
+
+    <div class="flex m25 hdivline2">
+
+    </div>
+
+    <div class="flex column m25 ">
+        <div class="bold">你的房间</div>
+
+        <div id="roomDiv">
+        </div>
+
+    </div>
+
+   
+    <script type="text/html" id="roomTpl">
+        {% for item in rooms %}
+        <div class="flex-sa mt25 p25"
+            style="height:40px;border:2px solid #2577ff;background:#2577ff;color:#fff;border-radius: 8px; ">
+            <div>{{item.name }}</div>
+            <div id="clickBtn" data-id="{{item.id }}" data-code="{{item.code}}">进入房间</div>
+        </div>
+        {% endfor %}
+    </script>
+
+    <script>
+        (function () {
+
+            function toast(text, time = 3000) {
+                var toast = document.getElementById('toast');
+                var toast_box = document.getElementsByClassName('toast_box')[0];
+                toast.innerHTML = text;
+                toast_box.style.display = 'flex';
+                setTimeout(() => {
+                    toast_box.style.display = 'none';
+                }, time)
+            }
+
+            function msgBox(type = 'show') {
+                if (type == 'show') {
+                    var msgBox = document.getElementById('msgBox');
+                    msgBox.style.display = 'block';
+                }
+                if (type == 'hide') {
+                    var msgBox = document.getElementById('msgBox');
+                    msgBox.style.display = 'none';
+                }
+            }
+            $(document).on('click', "#cancelBtn", function (e) {
+                msgBox("hide");
+            })
+            // function $$(selector) {
+            //     var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+            //     return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+            // }
+
+            // 判断是否登录
+            let login = localStorage.getItem("login");
+            if (!login) {
+                location.href = "./login.html?callback=" + escape(location.href);
+            }
+            let loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
+
+
+            AV.init({
+                appId: '2GpWXVb7zQozBVtVer4GRPtY-gzGzoHsz',
+                appKey: 'KE31O2EsHkK02HwJO5nyPfGD',
+                serverURLs: 'https://2gpwxvb7.lc-cn-n1-shared.com'
+            });
+            // var clickBtn = $$("#clickBtn")[0]; 
+            var rooms = new AV.Query('room').ascending('name');
+            rooms.equalTo('username', loginInfo.username);
+            var myroom;
+            rooms.find().then(function (res) {
+                // 成功 
+                myroom = res.map((i) => {
+                    return {
+                        'code': i._serverData.code,
+                        'name': i._serverData.name,
+                        'id': i.id
+                    }
+                })
+
+                // nunjucks  
+                var inner = nunjucks.renderString($('#roomTpl').html(), {
+                    'rooms': myroom
+                });
+                $("#roomDiv").html(inner);
+
+            }, function (error) {
+                // 异常处理
+            });
+            // switchBtn = document.getElementById("switchBtn") 
+            // $("#clickBtn").onclick = function() {
+
+            // }
+
+            var isCreateRoom = true;
+            $(document).on('click', "#okBtn", function (e) {
+                // console.log( $('#roomName')); 
+                let roomName = document.getElementById('roomName').value
+                let roomPass = document.getElementById('roomPass').value
+                if (isCreateRoom) { //创建房间
+                    //空校验 
+                    if (!roomName) {
+                        toast('请输入房间名称')
+                        return;
+                    }
+                    if (!roomPass) {
+                        toast('请输入口令')
+                        return;
+                    }
+
+                    //判断房间口令是否存在
+                    const query = new AV.Query('room');
+                    query.equalTo('password', roomPass);
+                    query.find().then((rooms) => {
+                        console.log(rooms);
+                        if (rooms.length > 0) {
+                            toast("已存在此口令")
+                            return;
+                        } else {
+                            const Room = AV.Object.extend('room');
+                            const todo = new Room();
+                            let code = randomString(5);
+                            todo.set('code', code);
+                            todo.set('name', roomName);
+                            todo.set('password', roomPass);
+                            todo.set('username', loginInfo.username);
+                            todo.save().then((todo) => {
+                                toast('加入成功');
+                                location.href = './chat.html?room=' + code
+                            }, (error) => {
+                                console.log("Error getting document:", error);
+                                toast('加入失败');
+                            });
+                        }
+                    });
+                } else {
+                    //判断口令是否存在 
+                    if (!roomPass) {
+                        toast('请输入口令')
+                        return;
+                    }
+                    //判断房间口令是否存在
+                    const query = new AV.Query('room');
+                    query.equalTo('password', roomPass);
+                    query.find().then((rooms) => { 
+                        if (rooms.length > 0) {  
+                            let rm = rooms[0];
+                            //    判断是否加入 
+                            let myroom =[]
+                            rooms.forEach(i => {
+                                if(i._serverData.username == loginInfo.username){
+                                    myroom.push(i)
+                                }
+                           }); 
+                            if (myroom.length>0) { 
+                                console.log('./chat?room=' + rm._serverData.code);
+                                location.href = './chat.html?room=' + rm._serverData.code;
+                                return;
+                            } else {
+                                const Room = AV.Object.extend('room');
+                                const todo = new Room();
+                                let code = randomString(5);
+                                todo.set('code', rm._serverData.code);
+                                todo.set('name', rm._serverData.name);
+                                todo.set('password', rm._serverData.password);
+                                todo.set('username', loginInfo.username);
+                                todo.save().then((todo) => {
+                                    toast('加入成功');
+                                    location.href = './chat.html?room=' + code
+                                }, (error) => {
+                                    console.log("Error getting document:", error);
+                                    toast('加入失败');
+                                });
+                            }
+
+                        } else { //不存在口令
+                           toast("口令不正确")
+                        }
+                    });
+
+                }
+            })
+
+            $(document).on('click', "#clearStorage", function (e) {
+                localStorage.clear('loginInfo')
+                localStorage.clear('login')
+                location.reload();
+            })
+            $(document).on('click', "#enterRoom", function (e) {
+                isCreateRoom = false;
+                msgBox()
+            })
+            $(document).on('click', "#createRoom", function (e) {
+                isCreateRoom = true;
+                msgBox()
+            })
+            $(document).on('click', "#clickBtn", function (e) {
+                location.href = "./chat.html?room=" + $("#clickBtn").data('code');
+            })
+        })();
+    </script>
+</body>
+
+</html>
