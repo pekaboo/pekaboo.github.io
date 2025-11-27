@@ -209,7 +209,7 @@ navbar:
     # #   icon: fa-regular fa-chart-bar
     About: 
       icon: fa-regular fa-user
-      path: /me-resume
+      path: https://my.wangyitu.tech/
       # submenus:
       #   我: /about
         # Github: https://github.com/EvanNotFound/hexo-theme-redefine
